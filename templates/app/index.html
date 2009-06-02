@@ -1,0 +1,29 @@
+{% extends "base_tabnu.html" %}
+{% block content %}
+	Shahar Livne's web presence guide
+	<br>
+	<br>
+	{{ debug }}
+{% if tabs %}
+	<div id="tabs">
+		<ul>
+			<div id="maindiv">
+				{% for tab in tabs %}
+				<li><a href="#{{ tab.name|escape }}" title="{{ tab.remark|escape }}"><span>{{ tab.title|escape }}</span></a></li>
+				{% endfor %}
+			</div>
+		</ul>
+		{% for tab in tabs %}
+		<div id="{{ tab.name|escape }}">
+		{% if tab.url %}
+		<iframe src="{{ tab.url }}" style="border: 0; width: 100%; height: 100%"><a href={{ tab.url }}>{{ tab.name|escape }}</a></iframe>
+
+		</iframe>
+		{% else %}
+		<iframe src=/tabnu/{{ tab.name|escape }} style="border: 0; width: 100%; height: 100%"><a href=/tabnu/{{ tab.name|escape }}>{{ tab.name|escape }}</a></iframe>
+		{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+{% endif %}
+{% endblock %}

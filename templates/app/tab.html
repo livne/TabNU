@@ -1,0 +1,26 @@
+{% extends "base_tabnu.html" %}
+{% block content %}
+{{ debug }}
+{% if tab %}
+	<div id="tabs">
+		<ul>
+			<div id="{{ tab.name|escape }}-maindiv">
+				{% for child in tab.children %}
+				<li><a href="#{{ child.name|escape }}" title="{{ child.remark|escape }}"><span>{{ child.title|escape }}</span></a></li>
+				{% endfor %}
+			</div>
+		</ul>
+		{% for child in tab.children %}
+		<div id="{{ child.name|escape }}">
+		{% if child.url %}
+		<iframe src="{{ child.url }}" style="border: 0; width: 100%; height: 100%">><a href={{ child.url }}>{{ child.name|escape }}</a></iframe>
+
+		</iframe>
+		{% else %}
+		<iframe src=/tabnu/{{ child.name|escape }} style="border: 0; width: 100%; height: 100%"><a href=/tabnu/{{ child.name|escape }}>{{ child.name|escape }}</a></iframe>
+		{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+{% endif %}
+{% endblock %}
