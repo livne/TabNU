@@ -7,7 +7,7 @@ from tabnu.app.models import Tab
 
 def index(request):
 	try:
-		tabs_list = Tab.objects.filter(parent=None).order_by('order_value')
+		tabs_list = Tab.objects.filter(parent=None).filter(active__exact=1).order_by('order_value')
 	except Tab.DoesNotExist:
 		output = _('No root tabs exist')
 		return render_to_response('app/error.html', {'error_message': output})
@@ -26,7 +26,7 @@ def tab(request, tab_name):
 		output = _('Tab %(tab_name)s does not exist') % {'tab_name': tab_name}
 		return render_to_response('app/error.html', {'error_message': output})
 	# update children
-	tab.children = tab.child_set.all()
+	tab.children = tab.child_set.filter(active__exact=1)
 	debug = ''
 	return render_to_response('app/tab.html', {'tab': tab, 'title': 'Shahar Livne - TabNU', 'debug': debug },
 		context_instance=template.RequestContext(request))
