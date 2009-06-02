@@ -32,15 +32,5 @@ class Tab(models.Model):
 		verbose_name = _('Tab')
 		verbose_name_plural = _('Tabs')
 
-	class Admin:
-		list_display = ('name', 'title', 'remark', 'active', 'updated',)
-		list_filter = ['active',]
-		search_fields = ['name', 'title', 'remark', 'url',]
-		fields = (
-			(None, {
-				'fields': ('name', 'title', 'remark', 'url', 'order_value', 'parent', 'updated', 'active', 'effect',)
-			}),
-		)
-
 	def save(self):
 		super(Tab, self).save()
