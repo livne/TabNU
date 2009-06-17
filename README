@@ -9,7 +9,7 @@ and exposes them via clean recursive tabs. Everything about the target object
 can be found on one single page.
 
 It runs well for ~1 year with mysql+nginx+runfcgi on a 20$/Month VPS from 
-Slicehost (referal: http://tinyurl.com/djangopro)
+Slicehost ( referal: http://tinyurl.com/djangopro )
 
 Written by Shahar Livne, June 2008.
 Checked with django r10788 (2009-05-15), before git upload.
